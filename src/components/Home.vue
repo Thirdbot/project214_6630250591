@@ -1,29 +1,27 @@
 <template>
     <page-base>
         <h2>Home</h2>
-        <li v-for="data in datas" :key="data.id">
-            {{ data.email }}
-        </li>
+        <p>{{ user?.name }}</p>
+        <data-card @selecteduser="handleSelectedUser"></data-card>
     </page-base>
 </template>
 
 <script>
+import DataCard from './DataCard.vue'
 export default {
     name: 'page-home',
+    components: {
+        'data-card': DataCard
+    },
     data() {
         return {
-            datas:null
+            user: ''
         }
     },
-    created() {
-        fetch('http://localhost:3000/users',
-            {
-                mathod:'GET'
-            })
-            .then(response => response.json())
-            .then(data => {
-                this.datas = data
-            })
+    methods: {
+        handleSelectedUser(user) {
+            this.user = user;
+        }
     }
 }
 </script>

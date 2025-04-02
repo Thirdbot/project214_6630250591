@@ -4,7 +4,6 @@
         <form v-on:submit.prevent="SubmitForm" class="setting-form">
             <input type="text" name="name" placeholder="Name" required>
             <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Submit</button>
             <p v-if="message" :class="['message', messageType]">{{ message }}</p>
         </form>
@@ -25,11 +24,10 @@ export default {
             const formData = new FormData(e.target);
             const name = formData.get('name');
             const email = formData.get('email');
-            const password = formData.get('password');
 
             const response = await fetch('http://localhost:3000/users', {
                 method: 'POST',
-                body: JSON.stringify({ name, email, password }),
+                body: JSON.stringify({ name, email }),
                 headers: {
                     'Content-Type': 'application/json'
                 }
