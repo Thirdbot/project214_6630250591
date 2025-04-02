@@ -1,5 +1,5 @@
 <template>
-    <router-link class="customButton" :to="to">   
+    <router-link class="router-button" :to="to">   
         <slot></slot>
     </router-link>
 </template>
@@ -17,12 +17,17 @@ export default {
 </script>
 
 <style scoped>
-.customButton{
-    background-color: #42b983;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
+.router-button {
+    background-color: #10b981;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.2s;
+}
+
+.router-button:hover {
+    background-color: #059669;
 }
 </style>
