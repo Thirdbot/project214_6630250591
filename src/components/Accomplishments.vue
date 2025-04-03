@@ -2,11 +2,11 @@
   <div class="accomplishments-container">
     <div class="accomplishments-header">
       <h2>Accomplishments</h2>
-      <button @click="toggleEdit" class="edit-btn">{{ isEditing ? 'Save' : 'Edit' }}</button>
+      <button @click="toggleEdit" class="edit-btn">{{ isEditing ? 'Save Changes' : 'Add/Edit Accomplishments' }}</button>
     </div>
     
     <div class="accomplishments-list">
-      <div v-for="(accomplishment, index) in accomplishments" :key="accomplishment.id" class="accomplishment-card">
+      <div v-for="(accomplishment, index) in (isEditing ? editedAccomplishments : accomplishments)" :key="accomplishment.id || index" class="accomplishment-card">
         <div v-if="!isEditing">
           <h3>{{ accomplishment.title }}</h3>
           <p>{{ accomplishment.description }}</p>
@@ -16,11 +16,11 @@
           <input v-model="editedAccomplishments[index].title" placeholder="Title">
           <textarea v-model="editedAccomplishments[index].description" placeholder="Description"></textarea>
           <input v-model="editedAccomplishments[index].date" placeholder="Date" type="date">
-          <button @click="deleteAccomplishment(accomplishment.id)" class="delete-btn">Delete</button>
+          <button @click="deleteAccomplishment(accomplishment.id)" class="delete-btn">Delete Accomplishment</button>
         </div>
       </div>
       
-      <button v-if="isEditing" @click="addNewAccomplishment" class="add-btn">Add New Accomplishment</button>
+      <button v-if="isEditing" @click="addNewAccomplishment" class="add-btn">Add Another Accomplishment</button>
     </div>
   </div>
 </template>
@@ -38,31 +38,44 @@ export default {
     }
   },
   async created() {
-    try {
-      const response = await axios.get('http://localhost:3000/accomplishments');
-      this.accomplishments = response.data;
-    } catch (error) {
-      console.error('Error fetching accomplishments:', error);
-    }
+    await this.fetchAccomplishments();
   },
   methods: {
+    async fetchAccomplishments() {
+      try {
+        const response = await axios.get('http://localhost:3000/accomplishments');
+        this.accomplishments = response.data;
+        this.editedAccomplishments = JSON.parse(JSON.stringify(this.accomplishments));
+      } catch (error) {
+        console.error('Error fetching accomplishments:', error);
+      }
+    },
     async toggleEdit() {
       if (this.isEditing) {
         try {
-          // Update existing accomplishments
-          for (const accomplishment of this.editedAccomplishments) {
-            if (accomplishment.id) {
-              await axios.put(`http://localhost:3000/accomplishments/${accomplishment.id}`, accomplishment);
-            } else {
-              await axios.post('http://localhost:3000/accomplishments', accomplishment);
+          // First, handle new accomplishments (those without IDs)
+          const newAccomplishments = this.editedAccomplishments.filter(acc => !acc.id);
+          for (const acc of newAccomplishments) {
+            const response = await axios.post('http://localhost:3000/accomplishments', acc);
+            const index = this.editedAccomplishments.findIndex(a => a === acc);
+            if (index !== -1) {
+              this.editedAccomplishments[index] = response.data;
             }
           }
-          const response = await axios.get('http://localhost:3000/accomplishments');
-          this.accomplishments = response.data;
+
+          // Then, update existing accomplishments
+          const existingAccomplishments = this.editedAccomplishments.filter(acc => acc.id);
+          for (const acc of existingAccomplishments) {
+            await axios.put(`http://localhost:3000/accomplishments/${acc.id}`, acc);
+          }
+
+          // Update the main array with the edited data
+          this.accomplishments = JSON.parse(JSON.stringify(this.editedAccomplishments));
         } catch (error) {
           console.error('Error updating accomplishments:', error);
         }
       } else {
+        // When entering edit mode, create a deep copy of the accomplishments
         this.editedAccomplishments = JSON.parse(JSON.stringify(this.accomplishments));
       }
       this.isEditing = !this.isEditing;
@@ -77,6 +90,8 @@ export default {
     async deleteAccomplishment(id) {
       try {
         await axios.delete(`http://localhost:3000/accomplishments/${id}`);
+        // Remove from both arrays
+        this.accomplishments = this.accomplishments.filter(acc => acc.id !== id);
         this.editedAccomplishments = this.editedAccomplishments.filter(acc => acc.id !== id);
       } catch (error) {
         console.error('Error deleting accomplishment:', error);
@@ -180,3 +195,4 @@ export default {
   background: #cc0000;
 }
 </style> 
+ 

@@ -2,11 +2,11 @@
   <div class="education-container">
     <div class="education-header">
       <h2>Education</h2>
-      <button @click="toggleEdit" class="edit-btn">{{ isEditing ? 'Save' : 'Edit' }}</button>
+      <button @click="toggleEdit" class="edit-btn">{{ isEditing ? 'Save Changes' : 'Add/Edit Subjects' }}</button>
     </div>
     
     <div class="subjects-list">
-      <div v-for="(subject, index) in subjects" :key="subject.id" class="subject-card">
+      <div v-for="(subject, index) in (isEditing ? editedSubjects : subjects)" :key="subject.id || index" class="subject-card">
         <div v-if="!isEditing">
           <h3>{{ subject.subjectName }}</h3>
           <p>Subject ID: {{ subject.subjectId }}</p>
@@ -18,11 +18,11 @@
           <input v-model="editedSubjects[index].subjectId" placeholder="Subject ID">
           <input v-model="editedSubjects[index].credit" placeholder="Credits">
           <input v-model="editedSubjects[index].grade" placeholder="Grade">
-          <button @click="deleteSubject(subject.id)" class="delete-btn">Delete</button>
+          <button @click="deleteSubject(subject.id)" class="delete-btn">Delete Subject</button>
         </div>
       </div>
       
-      <button v-if="isEditing" @click="addNewSubject" class="add-btn">Add New Subject</button>
+      <button v-if="isEditing" @click="addNewSubject" class="add-btn">Add Another Subject</button>
     </div>
   </div>
 </template>
@@ -40,14 +40,17 @@ export default {
     }
   },
   async created() {
-    try {
-      const response = await axios.get('http://localhost:3000/subjects');
-      this.subjects = response.data;
-    } catch (error) {
-      console.error('Error fetching subjects:', error);
-    }
+    await this.fetchSubjects();
   },
   methods: {
+    async fetchSubjects() {
+      try {
+        const response = await axios.get('http://localhost:3000/subjects');
+        this.subjects = response.data;
+      } catch (error) {
+        console.error('Error fetching subjects:', error);
+      }
+    },
     async toggleEdit() {
       if (this.isEditing) {
         try {
@@ -59,8 +62,7 @@ export default {
               await axios.post('http://localhost:3000/subjects', subject);
             }
           }
-          const response = await axios.get('http://localhost:3000/subjects');
-          this.subjects = response.data;
+          await this.fetchSubjects();
         } catch (error) {
           console.error('Error updating subjects:', error);
         }
@@ -80,6 +82,8 @@ export default {
     async deleteSubject(id) {
       try {
         await axios.delete(`http://localhost:3000/subjects/${id}`);
+        // Remove from both arrays
+        this.subjects = this.subjects.filter(subject => subject.id !== id);
         this.editedSubjects = this.editedSubjects.filter(subject => subject.id !== id);
       } catch (error) {
         console.error('Error deleting subject:', error);
@@ -153,11 +157,6 @@ export default {
   background: #45a049;
 }
 
-.add-btn {
-  margin-top: 1rem;
-  width: 100%;
-}
-
 .delete-btn {
   background: #ff4444;
   color: white;
@@ -171,5 +170,9 @@ export default {
 
 .delete-btn:hover {
   background: #cc0000;
+}
+
+.add-btn {
+  margin-top: 1rem;
 }
 </style> 

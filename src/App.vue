@@ -5,6 +5,7 @@
     </header>
     <main class="app-main">
       <Profile />
+      <SchoolHistory />
       <Education />
       <Accomplishments />
     </main>
@@ -15,13 +16,15 @@
 import Profile from './components/Profile.vue'
 import Education from './components/Education.vue'
 import Accomplishments from './components/Accomplishments.vue'
+import SchoolHistory from './components/SchoolHistory.vue'
 
 export default {
   name: 'App',
   components: {
     Profile,
     Education,
-    Accomplishments
+    Accomplishments,
+    SchoolHistory
   }
 }
 </script>
