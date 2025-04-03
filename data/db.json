@@ -1,20 +1,39 @@
 {
-  "users": [
+  "profile": {
+    "id": 1,
+    "picture": "https://via.placeholder.com/150",
+    "fullName": "Punnaphop",
+    "lastName": "Meerit",
+    "oldSchool": "kasetsart University"
+  },
+  "subjects": [
     {
       "id": "1",
-      "name": "John Doe",
-      "email": "john@doe.com"
+      "subjectId": "MATH101",
+      "subjectName": "Mathematics",
+      "credit": 3,
+      "grade": "A"
     },
     {
-      "id": "5960",
-      "name": "Punnaphop Meerit",
-      "email": "ggwpxxzacast@gmail.com",
-      "password": "ada"
+      "id": "2",
+      "subjectId": "ENG101",
+      "subjectName": "English",
+      "credit": 3,
+      "grade": "B+"
+    }
+  ],
+  "accomplishments": [
+    {
+      "id": "1",
+      "title": "Academic Excellence Award",
+      "description": "Received for outstanding performance in Mathematics",
+      "date": "2023-05-15"
     },
     {
-      "id": "f4c1",
-      "name": "Punnaphop Meerit",
-      "email": "astroll656@gmail.com"
+      "id": "2",
+      "title": "Science Fair Winner",
+      "description": "First place in regional science competition",
+      "date": "2023-03-20"
     }
   ]
 }
