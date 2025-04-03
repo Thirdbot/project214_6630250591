@@ -2,7 +2,7 @@
   <div class="profile-container">
     <div class="profile-header">
       <div class="profile-image">
-        <img src="../assets/me.jpg" alt="Profile Picture" class="profile-pic">
+        <img src="../assets/profile.jpg" alt="Profile Picture" class="profile-pic">
         <button @click="toggleEdit" class="edit-btn">{{ isEditing ? 'Save' : 'Edit' }}</button>
       </div>
       <div class="profile-info">
