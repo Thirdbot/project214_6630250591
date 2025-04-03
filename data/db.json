@@ -6,7 +6,217 @@
     "lastName": "มีฤทธิ์",
     "oldSchool": "มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตศรีราชา"
   },
-  "schoolHistory": [],
-  "subjects": [],
+  "schoolHistory": [
+    {
+      "id": "a622",
+      "schoolName": "โรงเรียนโรจนวิทย์ พิษณุโลก",
+      "degree": "จบประถมต้น-ปลาย",
+      "startYear": 2009,
+      "endYear": 2015,
+      "description": "อ.1 - ป.6"
+    },
+    {
+      "id": "9e18",
+      "schoolName": "โรงเรียนมัธยมสาธิตมหาวิทยาลัยนเรศวร",
+      "degree": "จบมัธยมต้น-ปลาย",
+      "startYear": 2016,
+      "endYear": 2022,
+      "description": "ม.1 - ม.6"
+    },
+    {
+      "id": "1b74",
+      "schoolName": "มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตศรีาราชา",
+      "degree": "ปี2",
+      "startYear": 2023,
+      "endYear": null,
+      "description": "กำลังศึกษา"
+    }
+  ],
+  "subjects": [
+    {
+      "id": "1",
+      "subjectId": "03751112",
+      "subjectName": "สังคมและการเมือง",
+      "subjectNameEng": "Social and Politics",
+      "credit": 3,
+      "grade": "B+"
+    },
+    {
+      "id": "2",
+      "subjectId": "01999021",
+      "subjectName": "ภาษาไทยเพื่อการสื่อสาร",
+      "subjectNameEng": "Thai Language for Communication",
+      "credit": 3,
+      "grade": "B+"
+    },
+    {
+      "id": "3",
+      "subjectId": "01418141",
+      "subjectName": "ทรัพย์สินทางปัญญาและจรรยาบรรณวิชาชีพ",
+      "subjectNameEng": "Intellectual Properties and Professional Ethics",
+      "credit": 3,
+      "grade": "A"
+    },
+    {
+      "id": "4",
+      "subjectId": "01418111",
+      "subjectName": "วิทยาการคอมพิวเตอร์เบื้องต้น",
+      "subjectNameEng": "Introduction to Computer Science",
+      "credit": 2,
+      "grade": "B"
+    },
+    {
+      "id": "5",
+      "subjectId": "01355101",
+      "subjectName": "ภาษาอังกฤษในชีวิตประจำวัน",
+      "subjectNameEng": "English for Everyday Life",
+      "credit": 0,
+      "grade": "P"
+    },
+    {
+      "id": "6",
+      "subjectId": "01355102",
+      "subjectName": "ภาษาอังกฤษในมหาวิทยาลัย",
+      "subjectNameEng": "English for University Life",
+      "credit": 0,
+      "grade": "P"
+    },
+    {
+      "id": "7",
+      "subjectId": "01355103",
+      "subjectName": "ภาษาอังกฤษเพื่อโอกาสในการทำงาน",
+      "subjectNameEng": "English for Job Opportunities",
+      "credit": 3,
+      "grade": "A"
+    },
+    {
+      "id": "8",
+      "subjectId": "01418112",
+      "subjectName": "แนวคิดการโปรแกรมเบื้องต้น",
+      "subjectNameEng": "Fundamental Programming Concepts",
+      "credit": 3,
+      "grade": "A"
+    },
+    {
+      "id": "9",
+      "subjectId": "01417111",
+      "subjectName": "แคลคูลัส I",
+      "subjectNameEng": "Calculus I",
+      "credit": 3,
+      "grade": "B+"
+    },
+    {
+      "id": "10",
+      "subjectId": "01999111",
+      "subjectName": "ศาสตร์แห่งแผ่นดิน",
+      "subjectNameEng": "Knowledge of the Land",
+      "credit": 2,
+      "grade": "A"
+    },
+    {
+      "id": "11",
+      "subjectId": "01417322",
+      "subjectName": "พีชคณิตเชิงเส้นพื้นฐาน",
+      "subjectNameEng": "Basic Linear Algebra",
+      "credit": 3,
+      "grade": "D+"
+    },
+    {
+      "id": "12",
+      "subjectId": "01418113",
+      "subjectName": "การโปรแกรมคอมพิวเตอร์",
+      "subjectNameEng": "Computer Programming",
+      "credit": 3,
+      "grade": "B+"
+    },
+    {
+      "id": "13",
+      "subjectId": "01418131",
+      "subjectName": "การโปรแกรมทางสถิติ",
+      "subjectNameEng": "Statistical Programming",
+      "credit": 3,
+      "grade": "B+"
+    },
+    {
+      "id": "14",
+      "subjectId": "01418132",
+      "subjectName": "หลักมูลการคณนา",
+      "subjectNameEng": "Fundamentals of Computing",
+      "credit": 3,
+      "grade": "A"
+    },
+    {
+      "id": "15",
+      "subjectId": "01999041",
+      "subjectName": "เศรษฐศาสตร์เพื่อการดำเนินชีวิตที่ดี",
+      "subjectNameEng": "Economics for Better Living",
+      "credit": 3,
+      "grade": "B"
+    },
+    {
+      "id": "16",
+      "subjectId": "03654111",
+      "subjectName": "สุนทรียศาสตร์ทางการกีฬา",
+      "subjectNameEng": "Aesthetics of Sport",
+      "credit": 3,
+      "grade": "A"
+    },
+    {
+      "id": "17",
+      "subjectId": "01175118",
+      "subjectName": "แชร์บอลเพื่อสุขภาพ",
+      "subjectNameEng": "Chair Ball for Health",
+      "credit": 1,
+      "grade": "A"
+    },
+    {
+      "id": "18",
+      "subjectId": "01418211",
+      "subjectName": "การสร้างซอฟต์แวร์",
+      "subjectNameEng": "Software Construction",
+      "credit": 3,
+      "grade": "A"
+    },
+    {
+      "id": "19",
+      "subjectId": "01174231",
+      "subjectName": "นันทนาการเบื้องต้น",
+      "subjectNameEng": "Introduction to Recreation",
+      "credit": 2,
+      "grade": "B+"
+    },
+    {
+      "id": "20",
+      "subjectId": "01999012",
+      "subjectName": "สุขภาพเพื่อชีวิต",
+      "subjectNameEng": "Health for Life",
+      "credit": 3,
+      "grade": "A"
+    },
+    {
+      "id": "21",
+      "subjectId": "01418233",
+      "subjectName": "สถาปัตยกรรมคอมพิวเตอร์",
+      "subjectNameEng": "Computer Architecture",
+      "credit": 3,
+      "grade": "A"
+    },
+    {
+      "id": "22",
+      "subjectId": "01418231",
+      "subjectName": "โครงสร้างข้อมูลและขั้นตอนวิธี",
+      "subjectNameEng": "Data Structures and Algorithms",
+      "credit": 3,
+      "grade": "B+"
+    },
+    {
+      "id": "23",
+      "subjectId": "01418361",
+      "subjectName": "คอมพิวเตอร์วิทัศน์เบื้องต้น",
+      "subjectNameEng": "Introduction to Computer Vision",
+      "credit": 3,
+      "grade": "A"
+    }
+  ],
   "accomplishments": []
 }
