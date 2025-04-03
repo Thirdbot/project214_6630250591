@@ -2,103 +2,100 @@
   <div class="contact-container">
     <div class="contact-header">
       <h2>Contact Information</h2>
-      <button @click="toggleEdit" class="edit-btn">{{ isEditing ? 'Save Changes' : 'Edit Contact' }}</button>
+      <button @click="toggleEdit" class="edit-btn">{{ isEditing ? 'Close Form' : 'Edit Contact' }}</button>
     </div>
     
-    <div class="contact-content">
-      <div v-if="!isEditing" class="contact-display">
-        <div class="contact-item">
-          <i class="fas fa-envelope"></i>
-          <span>{{ contact.email }}</span>
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-phone"></i>
-          <span>{{ contact.phone }}</span>
-        </div>
-        <div class="contact-item">
-          <i class="fab fa-line"></i>
-          <span>{{ contact.line }}</span>
-        </div>
-        <div class="contact-item">
-          <i class="fab fa-github"></i>
-          <a :href="contact.github" target="_blank">{{ contact.github }}</a>
-        </div>
-        <div class="contact-item">
-          <i class="fab fa-linkedin"></i>
-          <a :href="contact.linkedin" target="_blank">{{ contact.linkedin }}</a>
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-map-marker-alt"></i>
-          <span>{{ contact.address }}</span>
-        </div>
+    <div v-if="!isEditing" class="contact-display">
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <span>{{ contact.email }}</span>
       </div>
-      
-      <form v-else @submit.prevent="saveContact" class="contact-edit">
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input 
-            id="email"
-            v-model="editedContact.email" 
-            type="email" 
-            placeholder="Enter your email"
-            required
-          >
-        </div>
-        <div class="form-group">
-          <label for="phone">Phone:</label>
-          <input 
-            id="phone"
-            v-model="editedContact.phone" 
-            type="tel" 
-            placeholder="Enter your phone number"
-            required
-          >
-        </div>
-        <div class="form-group">
-          <label for="line">Line ID:</label>
-          <input 
-            id="line"
-            v-model="editedContact.line" 
-            type="text" 
-            placeholder="Enter your Line ID"
-            required
-          >
-        </div>
-        <div class="form-group">
-          <label for="github">GitHub:</label>
-          <input 
-            id="github"
-            v-model="editedContact.github" 
-            type="url" 
-            placeholder="Enter your GitHub URL"
-            required
-          >
-        </div>
-        <div class="form-group">
-          <label for="linkedin">LinkedIn:</label>
-          <input 
-            id="linkedin"
-            v-model="editedContact.linkedin" 
-            type="url" 
-            placeholder="Enter your LinkedIn URL"
-            required
-          >
-        </div>
-        <div class="form-group">
-          <label for="address">Address:</label>
-          <textarea 
-            id="address"
-            v-model="editedContact.address" 
-            placeholder="Enter your address"
-            required
-          ></textarea>
-        </div>
-        <div class="form-actions">
-          <button type="submit" class="save-btn">Save Changes</button>
-          <button type="button" @click="cancelEdit" class="cancel-btn">Cancel</button>
-        </div>
-      </form>
+      <div class="contact-item">
+        <i class="fas fa-phone"></i>
+        <span>{{ contact.phone }}</span>
+      </div>
+      <div class="contact-item">
+        <i class="fab fa-line"></i>
+        <span>{{ contact.line }}</span>
+      </div>
+      <div class="contact-item">
+        <i class="fab fa-github"></i>
+        <a :href="contact.github" target="_blank">{{ contact.github }}</a>
+      </div>
+      <div class="contact-item">
+        <i class="fab fa-linkedin"></i>
+        <a :href="contact.linkedin" target="_blank">{{ contact.linkedin }}</a>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>{{ contact.address }}</span>
+      </div>
     </div>
+
+    <form v-else @submit.prevent="saveContact" class="contact-edit">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input 
+          id="email"
+          v-model="contact.email" 
+          type="email" 
+          placeholder="Enter your email"
+          required
+        >
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input 
+          id="phone"
+          v-model="contact.phone" 
+          type="tel" 
+          placeholder="Enter your phone number"
+          required
+        >
+      </div>
+      <div class="form-group">
+        <label for="line">Line ID:</label>
+        <input 
+          id="line"
+          v-model="contact.line" 
+          type="text" 
+          placeholder="Enter your Line ID"
+          required
+        >
+      </div>
+      <div class="form-group">
+        <label for="github">GitHub:</label>
+        <input 
+          id="github"
+          v-model="contact.github" 
+          type="url" 
+          placeholder="Enter your GitHub URL"
+          required
+        >
+      </div>
+      <div class="form-group">
+        <label for="linkedin">LinkedIn:</label>
+        <input 
+          id="linkedin"
+          v-model="contact.linkedin" 
+          type="url" 
+          placeholder="Enter your LinkedIn URL"
+          required
+        >
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <textarea 
+          id="address"
+          v-model="contact.address" 
+          placeholder="Enter your address"
+          required
+        ></textarea>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="save-btn">Save Contact Information</button>
+      </div>
+    </form>
   </div>
 </template>
 
@@ -118,15 +115,6 @@ export default {
         github: '',
         linkedin: '',
         address: ''
-      },
-      editedContact: {
-        id: '',
-        email: '',
-        phone: '',
-        line: '',
-        github: '',
-        linkedin: '',
-        address: ''
       }
     }
   },
@@ -139,7 +127,6 @@ export default {
         const response = await axios.get('http://localhost:3000/contact');
         if (response.data) {
           this.contact = response.data;
-          this.editedContact = JSON.parse(JSON.stringify(this.contact));
         }
       } catch (error) {
         console.error('Error fetching contact information:', error);
@@ -147,22 +134,15 @@ export default {
     },
     async saveContact() {
       try {
-        await axios.patch('http://localhost:3000/contact', this.editedContact);
-        this.contact = JSON.parse(JSON.stringify(this.editedContact));
+        await axios.patch('http://localhost:3000/contact', this.contact);
         this.isEditing = false;
+        alert('Contact information saved successfully!');
       } catch (error) {
         console.error('Error updating contact information:', error);
         alert('Failed to save contact information. Please try again.');
       }
     },
-    cancelEdit() {
-      this.editedContact = JSON.parse(JSON.stringify(this.contact));
-      this.isEditing = false;
-    },
     toggleEdit() {
-      if (!this.isEditing) {
-        this.editedContact = JSON.parse(JSON.stringify(this.contact));
-      }
       this.isEditing = !this.isEditing;
     }
   }
@@ -191,7 +171,7 @@ export default {
   color: #333;
 }
 
-.contact-content {
+.contact-display {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -244,38 +224,25 @@ export default {
 }
 
 .form-actions {
-  display: flex;
-  gap: 1rem;
   margin-top: 1.5rem;
-}
-
-.edit-btn,
-.save-btn,
-.cancel-btn {
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s;
-  border: none;
+  text-align: center;
 }
 
 .edit-btn,
 .save-btn {
   background: #4CAF50;
   color: white;
-}
-
-.cancel-btn {
-  background: #f44336;
-  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .edit-btn:hover,
 .save-btn:hover {
   background: #45a049;
-}
-
-.cancel-btn:hover {
-  background: #d32f2f;
 }
 </style> 
