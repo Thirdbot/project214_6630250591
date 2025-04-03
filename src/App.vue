@@ -7,7 +7,6 @@
       <Profile />
       <SchoolHistory />
       <Education />
-      <Accomplishments />
       <ContactInfo />
     </main>
   </div>
@@ -16,7 +15,6 @@
 <script>
 import Profile from './components/Profile.vue'
 import Education from './components/Education.vue'
-import Accomplishments from './components/Accomplishments.vue'
 import SchoolHistory from './components/SchoolHistory.vue'
 import ContactInfo from './components/ContactInfo.vue'
 
@@ -25,7 +23,6 @@ export default {
   components: {
     Profile,
     Education,
-    Accomplishments,
     SchoolHistory,
     ContactInfo
   }
