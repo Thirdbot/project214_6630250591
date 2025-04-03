@@ -1,13 +1,27 @@
 {
   "profile": {
+    "item": {
+      "id": "1",
+      "picture": "https://via.placeholder.com/150",
+      "fullName": "ปุณณภพ",
+      "lastName": "มีฤทธิ์",
+      "oldSchool": "มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตศรีราชา",
+      "name": "John Doe",
+      "title": "Software Developer",
+      "description": "Passionate about web development and creating user-friendly applications.",
+      "studentId": "65130500000",
+      "department": "Computer Science"
+    },
     "id": "1",
     "picture": "https://via.placeholder.com/150",
     "fullName": "ปุณณภพ",
     "lastName": "มีฤทธิ์",
     "oldSchool": "มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตศรีราชา",
-    "name": "John Doe",
-    "title": "Software Developer",
-    "description": "Passionate about web development and creating user-friendly applications."
+    "name": "Third",
+    "title": "student",
+    "description": "Passionate about web development and creating user-friendly applications.",
+    "studentId": "6630250591",
+    "department": "Computer Science"
   },
   "schoolHistory": [
     {
